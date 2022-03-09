@@ -3,7 +3,6 @@
 import 'package:evsu_student/component/choices.dart';
 import 'package:flutter/material.dart';
 
-import 'package:evsu_student/routes.dart';
 
 class Question extends StatefulWidget {
   const Question({Key? key}) : super(key: key);
