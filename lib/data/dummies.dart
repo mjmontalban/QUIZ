@@ -1,5 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
-import 'package:flutter/material.dart';
+
 
 class Dummy {
   static List getQuestion(subject) {
@@ -8,7 +7,6 @@ class Dummy {
       return [
         {
           'question': '1.What Color is this?',
-          'key': Colors.yellow,
           'answers': [
             {'answerText': 'Yellow', 'score': true},
             {'answerText': 'Brown', 'score': false},
@@ -17,7 +15,6 @@ class Dummy {
         },
         {
           'question': '2. What Color is this?',
-          'key': Colors.green,
           'answers': [
             {'answerText': 'Yellow', 'score': false},
             {'answerText': 'Green', 'score': true},
@@ -26,7 +23,6 @@ class Dummy {
         },
         {
           'question': '3. What Color is this?',
-          'key': Colors.orange,
           'answers': [
             {'answerText': 'Orange', 'score': true},
             {'answerText': 'Green', 'score': false},
@@ -35,7 +31,6 @@ class Dummy {
         },
         {
           'question': '4. What Color is this?',
-          'key': Colors.blue,
           'answers': [
             {'answerText': 'Orange', 'score': false},
             {'answerText': 'Green', 'score': false},
@@ -44,11 +39,41 @@ class Dummy {
         },
         {
           'question': '4. What Color is this?',
-          'key': Colors.indigo,
           'answers': [
             {'answerText': 'Orange', 'score': false},
             {'answerText': 'Green', 'score': false},
             {'answerText': 'Indigo', 'score': true}
+          ]
+        }
+      ];
+    }
+    if(subject == 'SHAPES'){
+       return [
+        {
+          'question': 'assets/questions/RECTANGLE.mp4',
+          'unqiue' : 1,
+          'answers': [
+            {'answerText': 'SQUARE', 'score': false},
+            {'answerText': 'CIRCLE', 'score': false},
+            {'answerText': 'RECTANGLE', 'score': true}
+          ]
+        },
+        {
+          'question': 'assets/questions/SQUARE.mp4',
+          'unqiue' : 2,
+          'answers': [
+            {'answerText': 'RECTANGLE', 'score': false},
+            {'answerText': 'SQUARE', 'score': true},
+            {'answerText': 'DIAMOND', 'score': false}
+          ]
+        },
+        {
+          'question': 'assets/questions/DIAMOND.mp4',
+          'unqiue' : 3,
+          'answers': [
+            {'answerText': 'DIAMOND', 'score': true},
+            {'answerText': 'CIRCLE', 'score': false},
+            {'answerText': 'SQAURE', 'score': false}
           ]
         }
       ];

@@ -12,10 +12,15 @@ var videoList = [
     'path' : 'assets/lessons/SENSES.mp4',
     'thumbnail' : 'http://192.168.1.15:88/evsu/senses.png'
   },
-   {
+  {
     'name' : 'COLORS',
     'path' : 'assets/lessons/COLORS.mp4',
-    'thumbnail' : 'http://192.168.1.15:88/evsu/colors.jpeg'
+    'thumbnail' : 'http://192.168.1.15:88/evsu/colors.png'
+  },
+   {
+    'name' : 'SHAPES',
+    'path' : 'assets/lessons/SHAPE.mp4',
+    'thumbnail' : 'http://192.168.1.15:88/evsu/shape.jpeg'
   }
 ];
 

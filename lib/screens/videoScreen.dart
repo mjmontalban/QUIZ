@@ -2,7 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:evsu_student/component/chewie.dart';
-import 'package:video_player/video_player.dart';
 import 'package:evsu_student/screens/questions.dart';
 class Watch extends StatefulWidget {
   final name, path;
@@ -13,6 +12,7 @@ class Watch extends StatefulWidget {
 }
 
 class _WatchState extends State<Watch> {
+  UniqueKey _uniqueKey = UniqueKey();
   @override
   Widget build(BuildContext context) {
      return Scaffold(
@@ -25,10 +25,8 @@ class _WatchState extends State<Watch> {
           SizedBox(
             height: 850,
             child: VideoScreen(
-            videoPlayerController: VideoPlayerController.asset(
-              widget.path,
-            ),
-            looping: true,
+              path: widget.path,
+              unique: _uniqueKey
           ),
           )
         ],

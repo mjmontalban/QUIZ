@@ -4,9 +4,10 @@
    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="evsu_student"
+        android:label="KINDERGARTEN"
         android:icon="@mipmap/ic_launcher">
         <activity
+            android:screenOrientation="landscape"
             android:name=".MainActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"

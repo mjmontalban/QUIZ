@@ -1,9 +1,9 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, prefer_const_declarations, unused_element, prefer_typing_uninitialized_variables
-
 import 'package:evsu_student/component/choices.dart';
 import 'package:evsu_student/data/dummies.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:evsu_student/component/chewie.dart';
 
 class Question extends StatefulWidget {
   final subjectId;
@@ -14,6 +14,8 @@ class Question extends StatefulWidget {
 }
 
 class _QuestionState extends State<Question> {
+  String defaultPath = '-';
+  UniqueKey _uniqueKey = UniqueKey();
   List<Icon> _scoreTracker = [];
   int _questionIndex = 0;
   int _totalScore = 0;
@@ -43,6 +45,8 @@ class _QuestionState extends State<Question> {
       _correctAnswerSelected = false;
       _questionIndex++;
       answerWasSelected = false;
+      defaultPath = _getData()[_questionIndex]['question'];
+      _uniqueKey = UniqueKey();
     });
 
     if (_questionIndex >= _getData().length) {
@@ -56,8 +60,10 @@ class _QuestionState extends State<Question> {
     _totalScore = 0;
     answerWasSelected = false;
     endOfQuiz = false;
+    defaultPath = '-';
   }
-  _getData(){
+
+  _getData() {
     return Dummy.getQuestion(widget.subjectId);
   }
 
@@ -83,18 +89,13 @@ class _QuestionState extends State<Question> {
                 margin: EdgeInsets.only(bottom: 10.0, left: 30.0, right: 30.0),
                 padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
                 decoration: BoxDecoration(
-                    color: _getData()[_questionIndex]['key'] as Color,
+                    color: Colors.amber[50],
                     borderRadius: BorderRadius.circular(10.0)),
-                child: Center(
-                  child: Text(
-                    _getData()[_questionIndex]['question'] as String,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                        fontSize: 20.0,
-                        color: Colors.white,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
+                child: VideoScreen(
+                      path: defaultPath == '-'
+                          ? _getData()[_questionIndex]['question']
+                          : defaultPath,
+                      unique: _uniqueKey)
               ),
               ...(_getData()[_questionIndex]['answers']
                       as List<Map<String, Object>>)
