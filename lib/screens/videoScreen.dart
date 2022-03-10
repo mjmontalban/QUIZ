@@ -21,13 +21,16 @@ class _WatchState extends State<Watch> {
         backgroundColor: Colors.red[900],
       ),
       body: ListView(
-        children: <Widget>[
-          VideoScreen(
+        children: [
+          SizedBox(
+            height: 850,
+            child: VideoScreen(
             videoPlayerController: VideoPlayerController.asset(
               widget.path,
             ),
             looping: true,
           ),
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton.extended(
