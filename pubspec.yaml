@@ -39,6 +39,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   better_player: ^0.0.81
   chewie: ^1.2.2
+  font_awesome_flutter: ^9.2.0
 
 dev_dependencies:
   flutter_test:
@@ -66,13 +67,6 @@ flutter:
   assets:
   #   - images/a_dot_burr.jpeg
     - assets/splash.png
-    - assets/lessons/SENSES.mp4
-    - assets/lessons/COLORS.mp4
-    - assets/lessons/NUMBERS.mp4
-    - assets/lessons/SHAPE.mp4
-    - assets/questions/RECTANGLE.mp4
-    - assets/questions/SQUARE.mp4
-    - assets/questions/DIAMOND.mp4
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

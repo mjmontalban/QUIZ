@@ -24,7 +24,7 @@ class _VideoScreenState extends State<VideoScreen> {
   }
 
   void _initControllers(String url) {
-    _controller = VideoPlayerController.asset(url);
+    _controller = VideoPlayerController.network(url);
     _chewie = ChewieController(
         videoPlayerController: _controller,
         aspectRatio: 16 / 9,

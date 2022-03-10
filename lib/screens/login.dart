@@ -73,12 +73,7 @@ class _LoginState extends State<Login> {
         backgroundColor: Colors.red[900],
       ),
       body: LoadingOverlay(
-        child: SingleChildScrollView(
-          child: Container(
-            padding: const EdgeInsets.all(16.0),
-            child: loginPage(context),
-          ),
-        ),
+        child: pageBody(context),
         isLoading: _isLoading,
         color: Colors.grey[200],
         // demo of some additional parameters
@@ -91,58 +86,77 @@ class _LoginState extends State<Login> {
     );
   }
 
-  Widget loginPage(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20),
-      child: Column(
-        // mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Image.asset(
-            'assets/splash.png',
-            height: 200,
-            width: 200,
-          ),
-          SizedBox(
-              child: _showError
-                  ? Align(
-                      alignment: Alignment.topLeft,
-                      child: Text(
-                        message,
-                        style: TextStyle(
-                          color: Colors.red[900],
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+  
+  Widget pageBody(BuildContext context) {
+    return Center(
+        child: LayoutBuilder(
+                builder: (context, constraints) =>  Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(left: 20.0),
+                       height: constraints.maxHeight * 0.50,
+                       width: constraints.maxWidth * 0.4,
+                      child : Image.asset(
+                        'assets/splash.png',
+                         height: constraints.maxHeight * 0.50,
+                         width: constraints.maxWidth * 0.3,
+                    ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Container(
+                          margin: EdgeInsets.only(left: 20.0, bottom: 20.0),
+                          child: _showError
+                              ? Align(
+                                  alignment: Alignment.topLeft,
+                                  child: Text(
+                                    message,
+                                    style: TextStyle(
+                                      color: Colors.red[900],
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16,
+                                    ),
+                                  ),
+                                )
+                              : Text("")
+                        ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20.0),
+                        height: constraints.maxHeight * 0.17,
+                        width: constraints.maxWidth * 0.5,
+                        child: TextField(
+                          controller: userId,
+                          obscureText: false,
+                          decoration: InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: 'Student ID',
+                              // contentPadding:
+                              //     EdgeInsets.symmetric(horizontal: 16, vertical: 16)
+                            ),
                         ),
                       ),
+                      Container(
+                        margin: EdgeInsets.only(left: 20.0),
+                        width: constraints.maxWidth * 0.5,
+                        // height: constraints.maxHeight * 0.17,
+                        child: TextButton(
+                          onPressed: () {
+                            login();
+                          },
+                          child: Text("Login"),
+                          style: ButtonStyle(
+                              backgroundColor: MaterialStateProperty.all(Colors.red[900]),
+                              foregroundColor: MaterialStateProperty.all(Colors.white),
+                              padding: MaterialStateProperty.all(
+                                  EdgeInsets.symmetric(vertical: 16))),
+                        ),
+                      ),
+                      ],
                     )
-                  : Text("")),
-          SizedBox(height: 10),
-          TextField(
-            controller: userId,
-            obscureText: false,
-            decoration: InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Student ID',
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 16, vertical: 16)),
-          ),
-          SizedBox(height: 10),
-          SizedBox(
-            width: double.infinity,
-            child: TextButton(
-              onPressed: () {
-                login();
-              },
-              child: Text("Login"),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(Colors.red[900]),
-                  foregroundColor: MaterialStateProperty.all(Colors.white),
-                  padding: MaterialStateProperty.all(
-                      EdgeInsets.symmetric(vertical: 16))),
-            ),
-          ),
-        ],
-      ),
-    );
+                  ],
+                )
+              ),
+      );
   }
 }

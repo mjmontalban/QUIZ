@@ -1,5 +1,7 @@
 
 
+import 'package:evsu_student/global/global.dart';
+
 class Dummy {
   static List getQuestion(subject) {
 
@@ -50,7 +52,7 @@ class Dummy {
     if(subject == 'SHAPES'){
        return [
         {
-          'question': 'assets/questions/RECTANGLE.mp4',
+          'question': '$apiUrl/questions/RECTANGLE.mp4',
           'unqiue' : 1,
           'answers': [
             {'answerText': 'SQUARE', 'score': false},
@@ -59,7 +61,7 @@ class Dummy {
           ]
         },
         {
-          'question': 'assets/questions/SQUARE.mp4',
+          'question': '$apiUrl/questions/SQUARE.mp4',
           'unqiue' : 2,
           'answers': [
             {'answerText': 'RECTANGLE', 'score': false},
@@ -68,7 +70,7 @@ class Dummy {
           ]
         },
         {
-          'question': 'assets/questions/DIAMOND.mp4',
+          'question': '$apiUrl/questions/DIAMOND.mp4',
           'unqiue' : 3,
           'answers': [
             {'answerText': 'DIAMOND', 'score': true},
