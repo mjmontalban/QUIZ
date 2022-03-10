@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:evsu_student/component/chewie.dart';
 import 'package:video_player/video_player.dart';
-import 'package:evsu_student/routes.dart';
+import 'package:evsu_student/screens/questions.dart';
 class Watch extends StatefulWidget {
   final name, path;
   const Watch({Key? key, this.name, this.path}) : super(key: key);
@@ -32,10 +32,13 @@ class _WatchState extends State<Watch> {
       ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
-           Navigator.popAndPushNamed(
+          Navigator.push(
             context,
-            questions,
-        );
+            MaterialPageRoute(builder: (context) => Question(
+                subjectId : widget.name,
+              )
+            )
+          );
         },
         label: const Text('Go To Exercise'),
         icon: const Icon(Icons.thumb_up),
