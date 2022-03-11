@@ -1,12 +1,19 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:evsu_student/global/global.dart';
 import 'package:flutter/material.dart';
 
 class Choices extends StatefulWidget {
   final String answer;
   final Color answerColor;
   final VoidCallback answerTap;
-  const Choices({Key? key, required this.answer, required this.answerColor, required this.answerTap})
+  final double height;
+  final double width;
+  const Choices(
+      {Key? key,
+      required this.answer,
+      required this.answerColor,
+      required this.answerTap, required this.height, required this.width})
       : super(key: key);
 
   @override
@@ -16,20 +23,19 @@ class Choices extends StatefulWidget {
 class _ChoicesState extends State<Choices> {
   @override
   Widget build(BuildContext context) {
-    return InkWell( 
+    return InkWell(
       onTap: widget.answerTap,
       child: Container(
         padding: EdgeInsets.all(15.0),
-        margin: EdgeInsets.symmetric(vertical: 5.0, horizontal: 30.0),
-        width: double.infinity,
+        height: widget.height,
+        width: widget.width,
         decoration: BoxDecoration(
             color: widget.answerColor,
-            border: Border.all(color: Colors.blue),
-            borderRadius: BorderRadius.circular(20.0)),
-        child: Text(
-          widget.answer,
-          style: TextStyle(fontSize: 15.0),
         ),
+        child: Image.network(
+          '$apiUrl/1.png',
+           height: 200,
+        )
       ),
     );
   }

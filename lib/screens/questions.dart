@@ -1,7 +1,8 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, prefer_const_declarations, unused_element, prefer_typing_uninitialized_variables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, unused_field, prefer_final_fields, prefer_const_declarations, unused_element, prefer_typing_uninitialized_variables, sized_box_for_whitespace, avoid_unnecessary_containers
 import 'package:evsu_student/component/choices.dart';
 import 'package:evsu_student/data/dummies.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:evsu_student/component/chewie.dart';
 
@@ -74,47 +75,56 @@ class _QuestionState extends State<Question> {
           title: Text('Quiz'),
           backgroundColor: Colors.red[900],
         ),
-        body: Center(
-          child: Column(
+        body: LayoutBuilder(
+          builder: (context, constraints) => Row(
             children: [
+              Column(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: constraints.maxHeight,
+                    width: constraints.maxWidth * 0.6,
+                    decoration: BoxDecoration(
+                      color: Colors.white
+                    ),
+                    child: VideoScreen(
+                      path: defaultPath == '-'
+                          ? _getData()[_questionIndex]['question']
+                          : defaultPath,
+                      unique: _uniqueKey)
+                  )
+                ],
+              ),
+            Column(
+              children: [
               Row(
                 children: [
                   if (_scoreTracker.isEmpty) SizedBox(height: 25.0),
                   if (_scoreTracker.isNotEmpty) ..._scoreTracker
                 ],
               ),
-              Container(
-                width: double.infinity,
-                height: 130.0,
-                margin: EdgeInsets.only(bottom: 10.0, left: 30.0, right: 30.0),
-                padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 20.0),
-                decoration: BoxDecoration(
-                    color: Colors.amber[50],
-                    borderRadius: BorderRadius.circular(10.0)),
-                child: VideoScreen(
-                      path: defaultPath == '-'
-                          ? _getData()[_questionIndex]['question']
-                          : defaultPath,
-                      unique: _uniqueKey)
-              ),
-              ...(_getData()[_questionIndex]['answers']
+              SizedBox(height: 20,),
+                ...(_getData()[_questionIndex]['answers']
                       as List<Map<String, Object>>)
                   .map((answer) => Choices(
                         answer: answer['answerText'] as String,
-                        answerColor: answerWasSelected
-                            ? answer['score'] as bool
-                                ? Colors.green
-                                : Colors.red
-                            : Colors.white,
+                        answerColor: answerWasSelected ? answer['score'] as bool ? Colors.green
+                        : Colors.red : Colors.white,
                         answerTap: () {
                           if (answerWasSelected) {
                             return;
                           }
                           questionAnswered(answer['score'] as bool);
                         },
-                      )),
-              SizedBox(height: 20.0),
-              ElevatedButton(
+                        height: constraints.maxHeight * 0.20,
+                        width: constraints.maxWidth * 0.4,
+                    )
+                  ),
+                  SizedBox(height: 20,),
+                Container(
+                  height: constraints.maxHeight * 0.08,
+                  width: constraints.maxWidth * 0.4,
+                  child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       minimumSize: Size(double.infinity, 40.0)),
                   onPressed: () {
@@ -128,17 +138,21 @@ class _QuestionState extends State<Question> {
                     _nextQuestion();
                   },
                   child: Text(endOfQuiz ? 'Reset Exercise' : 'Next Question')),
-              Container(
-                padding: EdgeInsets.all(20.0),
-                child: Text(
-                  '${_totalScore.toString()}/${_getData().length}',
-                  style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
                 ),
-              ),
-              if (answerWasSelected && !endOfQuiz)
                 Container(
-                  height: 100,
-                  width: double.infinity,
+                  alignment: Alignment.center,
+                  // padding: EdgeInsets.all(20.0),
+                  height: constraints.maxHeight * 0.08,
+                  width: constraints.maxWidth * 0.4,
+                  child: Text(
+                    '${_totalScore.toString()}/${_getData().length}',
+                    style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                  ),
+                ),
+                if (answerWasSelected && !endOfQuiz)
+                Container(
+                  height: constraints.maxHeight * 0.08,
+                  width: constraints.maxWidth * 0.4,
                   color: _correctAnswerSelected ? Colors.green : Colors.red,
                   child: Center(
                     child: Text(
@@ -154,8 +168,8 @@ class _QuestionState extends State<Question> {
                 ),
               if (endOfQuiz)
                 Container(
-                  height: 100,
-                  width: double.infinity,
+                  height: constraints.maxHeight * 0.08,
+                  width: constraints.maxWidth * 0.4,
                   color: Colors.black,
                   child: Center(
                     child: Text(
@@ -169,8 +183,12 @@ class _QuestionState extends State<Question> {
                                 _totalScore >= 4 ? Colors.green : Colors.red)),
                   ),
                 ),
+              ],
+            )
             ],
-          ),
-        ));
+          )
+        )
+        
+        );
   }
 }
