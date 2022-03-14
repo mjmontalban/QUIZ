@@ -49,7 +49,7 @@ class _QuestionState extends State<Question> {
       _uniqueKey = UniqueKey();
     });
 
-    if (_questionIndex >= _getData().length) {
+    if (_questionIndex == _getData().length - 1) {
       _reset();
     }
   }
