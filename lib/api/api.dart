@@ -1,10 +1,11 @@
 // ignore_for_file: unnecessary_this
 
+import 'package:evsu_student/global/global.dart';
 import 'package:http/http.dart' as http;
 
 class Api {
   static String apiBaseUrl() {
-    return "http://192.168.1.15:88/evsu/";
+    return "$apiUrl/";
   }
 
   static Future login( userId ) async {
