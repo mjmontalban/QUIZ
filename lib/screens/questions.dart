@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:flutter/widgets.dart';
 import 'package:evsu_student/component/chewie.dart';
+import 'package:evsu_student/routes.dart';
 
 class Question extends StatefulWidget {
   final subjectId;
@@ -35,7 +36,7 @@ class _QuestionState extends State<Question> {
           ? Icon(Icons.check_circle, color: Colors.green)
           : Icon(Icons.clear, color: Colors.red));
 
-      if (_questionIndex + 1 == _getData().length) {
+      if (_questionIndex + 1 == _getData().length - 1) {
         endOfQuiz = true;
       }
     });
@@ -44,13 +45,13 @@ class _QuestionState extends State<Question> {
   void _nextQuestion() {
     setState(() {
       _correctAnswerSelected = false;
-      _questionIndex++;
       answerWasSelected = false;
+      _questionIndex++;
       defaultPath = _getData()[_questionIndex]['question'];
       _uniqueKey = UniqueKey();
     });
 
-    if (_questionIndex >= _getData().length) {
+    if (_questionIndex >= _getData().length - 1) {
       _reset();
     }
   }
@@ -62,6 +63,10 @@ class _QuestionState extends State<Question> {
     answerWasSelected = false;
     endOfQuiz = false;
     defaultPath = '-';
+     Navigator.popAndPushNamed(
+          context,
+          videos,
+        );
   }
 
   _getData() {
@@ -137,35 +142,35 @@ class _QuestionState extends State<Question> {
                     }
                     _nextQuestion();
                   },
-                  child: Text(endOfQuiz ? 'Reset Exercise' : 'Next Question')),
+                  child: Text(endOfQuiz ? 'Back to Home' : 'Next Question')),
                 ),
-                Container(
-                  alignment: Alignment.center,
-                  // padding: EdgeInsets.all(20.0),
-                  height: constraints.maxHeight * 0.08,
-                  width: constraints.maxWidth * 0.4,
-                  child: Text(
-                    '${_totalScore.toString()}/${_getData().length}',
-                    style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
-                  ),
-                ),
-                if (answerWasSelected && !endOfQuiz)
-                Container(
-                  height: constraints.maxHeight * 0.08,
-                  width: constraints.maxWidth * 0.4,
-                  color: _correctAnswerSelected ? Colors.green : Colors.red,
-                  child: Center(
-                    child: Text(
-                      _correctAnswerSelected
-                          ? 'Well done, you got it right.'
-                          : 'Wrong :/',
-                      style: TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white),
-                    ),
-                  ),
-                ),
+                // Container(
+                //   alignment: Alignment.center,
+                //   // padding: EdgeInsets.all(20.0),
+                //   height: constraints.maxHeight * 0.08,
+                //   width: constraints.maxWidth * 0.4,
+                //   child: Text(
+                //     '${_totalScore.toString()}/${_getData().length - 1}',
+                //     style: TextStyle(fontSize: 40.0, fontWeight: FontWeight.bold),
+                //   ),
+                // ),
+                // if (answerWasSelected && !endOfQuiz)
+                // Container(
+                //   height: constraints.maxHeight * 0.08,
+                //   width: constraints.maxWidth * 0.4,
+                //   color: _correctAnswerSelected ? Colors.green : Colors.red,
+                //   child: Center(
+                //     child: Text(
+                //       _correctAnswerSelected
+                //           ? 'Well done, you got it right.'
+                //           : 'Wrong :/',
+                //       style: TextStyle(
+                //           fontSize: 20.0,
+                //           fontWeight: FontWeight.bold,
+                //           color: Colors.white),
+                //     ),
+                //   ),
+                // ),
               if (endOfQuiz)
                 Container(
                   height: constraints.maxHeight * 0.08,
@@ -173,7 +178,7 @@ class _QuestionState extends State<Question> {
                   color: Colors.black,
                   child: Center(
                     child: Text(
-                        _totalScore >= 4
+                        _totalScore >= 2
                             ? 'Congratulations! Your final score is: $_totalScore.'
                             : 'Your final score is: $_totalScore. Better luck next time.',
                         style: TextStyle(

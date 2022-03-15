@@ -7,20 +7,20 @@ import 'package:evsu_student/global/global.dart';
 import 'package:evsu_student/screens/videoScreen.dart';
 import 'package:flutter/widgets.dart';
 var videoList = [
-  {
-    'name' : 'NUMBERS',
-    'path' : '$apiUrl/lessons/NUMBERS.mp4',
-    'thumbnail' : '$apiUrl/thumbnail/numbers.png',
-    'color' : Colors.blueAccent,
-    'icon' : FontAwesomeIcons.sortNumericUp
-  },
-  {
-    'name' : 'SENSES',
-    'path' : '$apiUrl/lessons/SENSES.mp4',
-    'thumbnail' : '$apiUrl/thumbnail/senses.png',
-    'color' : Colors.pink,
-    'icon' : FontAwesomeIcons.userFriends
-  },
+  // {
+  //   'name' : 'NUMBERS',
+  //   'path' : '$apiUrl/lessons/NUMBERS.mp4',
+  //   'thumbnail' : '$apiUrl/thumbnail/numbers.png',
+  //   'color' : Colors.blueAccent,
+  //   'icon' : FontAwesomeIcons.sortNumericUp
+  // },
+  // {
+  //   'name' : 'SENSES',
+  //   'path' : '$apiUrl/lessons/SENSES.mp4',
+  //   'thumbnail' : '$apiUrl/thumbnail/senses.png',
+  //   'color' : Colors.pink,
+  //   'icon' : FontAwesomeIcons.userFriends
+  // },
   {
     'name' : 'COLORS',
     'path' : '$apiUrl/lessons/COLORS.mp4',

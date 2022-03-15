@@ -8,27 +8,27 @@ class Dummy {
     if (subject == 'COLORS') {
       return [
         {
-          'question': '1.What Color is this?',
+          'question': '$apiUrl/a/GREEN.mp4',
           'answers': [
-            {'answerText': 'Yellow', 'score': true},
-            {'answerText': 'Brown', 'score': false},
-            {'answerText': 'black', 'score': false}
+            {'answerText': '$apiUrl/a/green.jpg', 'score': true},
+            {'answerText': '$apiUrl/a/red.gif', 'score': false},
+            {'answerText': '$apiUrl/a/blue.png', 'score': false}
           ]
         },
         {
-          'question': '2. What Color is this?',
+          'question': '$apiUrl/a/RED.mp4',
           'answers': [
-            {'answerText': 'Yellow', 'score': false},
-            {'answerText': 'Green', 'score': true},
-            {'answerText': 'black', 'score': false}
+            {'answerText': '$apiUrl/a/green.jpg', 'score': false},
+            {'answerText': '$apiUrl/a/red.gif', 'score': true},
+            {'answerText': '$apiUrl/a/blue.png', 'score': false}
           ]
         },
         {
-          'question': '3. What Color is this?',
+          'question': '$apiUrl/a/BLUE.mp4',
           'answers': [
-            {'answerText': 'Orange', 'score': true},
-            {'answerText': 'Green', 'score': false},
-            {'answerText': 'black', 'score': false}
+            {'answerText': '$apiUrl/a/blue.png', 'score': true},
+            {'answerText': '$apiUrl/a/green.jpg', 'score': false},
+            {'answerText': '$apiUrl/a/red.gif', 'score': false}
           ]
         },
         {
@@ -37,14 +37,6 @@ class Dummy {
             {'answerText': 'Orange', 'score': false},
             {'answerText': 'Green', 'score': false},
             {'answerText': 'Blue', 'score': true}
-          ]
-        },
-        {
-          'question': '4. What Color is this?',
-          'answers': [
-            {'answerText': 'Orange', 'score': false},
-            {'answerText': 'Green', 'score': false},
-            {'answerText': 'Indigo', 'score': true}
           ]
         }
       ];
@@ -55,18 +47,27 @@ class Dummy {
           'question': '$apiUrl/questions/RECTANGLE.mp4',
           'unqiue' : 1,
           'answers': [
-            {'answerText': 'SQUARE', 'score': false},
-            {'answerText': 'CIRCLE', 'score': false},
-            {'answerText': 'RECTANGLE', 'score': true}
+            {'answerText': '$apiUrl/a/diamond.png', 'score': false},
+            {'answerText': '$apiUrl/a/square.jpg', 'score': false},
+            {'answerText': '$apiUrl/a/rect.png', 'score': true}
           ]
         },
         {
           'question': '$apiUrl/questions/SQUARE.mp4',
           'unqiue' : 2,
           'answers': [
-            {'answerText': 'RECTANGLE', 'score': false},
-            {'answerText': 'SQUARE', 'score': true},
-            {'answerText': 'DIAMOND', 'score': false}
+            {'answerText': '$apiUrl/a/diamond.png', 'score': false},
+            {'answerText': '$apiUrl/a/square.jpg', 'score': true},
+            {'answerText': '$apiUrl/a/rect.png', 'score': false}
+          ]
+        },
+        {
+          'question': '$apiUrl/questions/DIAMOND.mp4',
+          'unqiue' : 3,
+          'answers': [
+            {'answerText': '$apiUrl/a/diamond.png', 'score': true},
+            {'answerText': '$apiUrl/a/square.jpg', 'score': false},
+            {'answerText': '$apiUrl/a/rect.png', 'score': false}
           ]
         },
         {

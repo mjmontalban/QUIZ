@@ -28,8 +28,9 @@ class _VideoScreenState extends State<VideoScreen> {
     _chewie = ChewieController(
         videoPlayerController: _controller,
         aspectRatio: 16 / 9,
-        // autoInitialize: true,
+        autoInitialize: true,
         // looping: true,
+        allowFullScreen: false,
         autoPlay: true);
   }
 

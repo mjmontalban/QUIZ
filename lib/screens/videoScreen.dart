@@ -1,4 +1,4 @@
-// ignore_for_file: file_names, unused_field, prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, prefer_final_fields, prefer_typing_uninitialized_variables
+// ignore_for_file: file_names, unused_field, prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables, prefer_final_fields, prefer_typing_uninitialized_variables, sized_box_for_whitespace
 
 import 'package:flutter/material.dart';
 import 'package:evsu_student/component/chewie.dart';
@@ -20,17 +20,13 @@ class _WatchState extends State<Watch> {
         title: Text(widget.name),
         backgroundColor: Colors.red[900],
       ),
-      body: ListView(
-        children: [
-          SizedBox(
-            height: 850,
+      body: LayoutBuilder(builder: (context, constraints) =>  Container(
+            height: constraints.maxHeight,
             child: VideoScreen(
               path: widget.path,
               unique: _uniqueKey
           ),
-          )
-        ],
-      ),
+      )),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(

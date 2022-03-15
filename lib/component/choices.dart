@@ -33,7 +33,7 @@ class _ChoicesState extends State<Choices> {
             color: widget.answerColor,
         ),
         child: Image.network(
-          '$apiUrl/1.png',
+          widget.answer,
            height: 200,
         )
       ),
